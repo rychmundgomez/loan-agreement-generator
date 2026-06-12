@@ -47,7 +47,7 @@ const fieldRow = (label, value) =>
 
 const bodyPara = (text) =>
   new Paragraph({
-    children: [new TextRun({ text, size: 20 })],
+    children: [new TextRun({ text, size: 24 })],
     spacing: { after: 120, line: 360 },
     alignment: AlignmentType.JUSTIFIED,
   });
@@ -60,16 +60,16 @@ const divider = () =>
 
 const signBlock = (role, name) => [
   new Paragraph({
-    children: [new TextRun({ text: role, bold: true, size: 22, color: navy })],
+    children: [new TextRun({ text: role, bold: true, size: 24, color: navy })],
     spacing: { before: 200, after: 60 },
   }),
   new Paragraph({
-    children: [new TextRun({ text: `Name:  ${name}`, size: 20 })],
+    children: [new TextRun({ text: `Name:  ${name}`, size: 22 })],
     spacing: { after: 80 },
   }),
   new Paragraph({
     children: [
-      new TextRun({ text: 'Signature:  ', size: 20 }),
+      new TextRun({ text: 'Signature:  ', size: 22 }),
       new TextRun({
         text: '___________________________________',
         size: 20,
@@ -111,14 +111,14 @@ export const generateDOCX = async (agreementData) => {
     }),
     new Paragraph({
       children: [
-        new TextRun({ text: `Reference: ${a.agreementNumber}`, size: 18, color: '666666' }),
+        new TextRun({ text: `Reference: ${a.agreementNumber}`, size: 20, color: '666666' }),
       ],
       alignment: AlignmentType.CENTER,
       spacing: { after: 40 },
     }),
     new Paragraph({
       children: [
-        new TextRun({ text: `Generated: ${a.generatedDate}`, size: 18, color: '666666' }),
+        new TextRun({ text: `Generated: ${a.generatedDate}`, size: 20, color: '666666' }),
       ],
       alignment: AlignmentType.CENTER,
       spacing: { after: 200 },
@@ -185,7 +185,7 @@ export const generateDOCX = async (agreementData) => {
 
     // Signatures
     new Paragraph({
-      children: [new TextRun({ text: 'SIGNATURES', bold: true, size: 24, color: navy })],
+      children: [new TextRun({ text: 'SIGNATURES', bold: true, size: 26, color: navy })],
       alignment: AlignmentType.CENTER,
       spacing: { before: 200, after: 120 },
     }),

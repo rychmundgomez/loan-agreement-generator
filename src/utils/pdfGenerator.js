@@ -29,7 +29,6 @@ export const generatePDF = (agreementData) => {
   };
 
   const addHeader = () => {
-    // Header bar
     doc.setFillColor(30, 58, 95);
     doc.rect(0, 0, pageW, 12, 'F');
     doc.setTextColor(255, 255, 255);
@@ -59,7 +58,7 @@ export const generatePDF = (agreementData) => {
   };
 
   const field = (label, value, indent = 0) => {
-    checkPageBreak(11);
+    checkPageBreak(8);
     doc.setFont('helvetica', 'bold');
     doc.setFontSize(10);
     doc.setTextColor(120, 120, 140);
@@ -165,10 +164,8 @@ export const generatePDF = (agreementData) => {
   field('Address:', a.witnessAddress);
   y += 5;
 
-  // Terms
-  checkPageBreak(20);
-  line(margin, y, pageW - margin, y);
-  y += 8;
+  // Terms — always starts on a new page
+  addPage();
   sectionTitle('Terms and Conditions');
 
   bodyText(`The Lender agrees to lend the Borrower the sum of ${a.loanAmount} on ${a.dateLoanGiven}.`);
@@ -194,7 +191,7 @@ export const generatePDF = (agreementData) => {
   y += 8;
 
   doc.setFont('helvetica', 'bold');
-  doc.setFontSize(11);
+  doc.setFontSize(13);
   doc.setTextColor(30, 58, 95);
   doc.text('SIGNATURES', pageW / 2, y, { align: 'center' });
   y += 8;
@@ -212,7 +209,7 @@ export const generatePDF = (agreementData) => {
     doc.setFillColor(30, 58, 95);
     doc.rect(0, pageH - 10, pageW, 10, 'F');
     doc.setFont('helvetica', 'normal');
-    doc.setFontSize(7);
+    doc.setFontSize(9);
     doc.setTextColor(180, 200, 230);
     doc.text('CONFIDENTIAL — For authorized parties only', margin, pageH - 4);
     doc.text(`${a.agreementNumber}`, pageW - margin, pageH - 4, { align: 'right' });

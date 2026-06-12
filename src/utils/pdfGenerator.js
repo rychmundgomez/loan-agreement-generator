@@ -33,7 +33,7 @@ export const generatePDF = (agreementData) => {
     doc.setFillColor(30, 58, 95);
     doc.rect(0, 0, pageW, 12, 'F');
     doc.setTextColor(255, 255, 255);
-    doc.setFontSize(7);
+    doc.setFontSize(11);
     doc.setFont('helvetica', 'normal');
     doc.text(`LOAN AGREEMENT  |  Ref: ${agreementData.agreementNumber}`, margin, 8);
     doc.text(`Page ${pageNum.current}`, pageW - margin, 8, { align: 'right' });
@@ -51,7 +51,7 @@ export const generatePDF = (agreementData) => {
     doc.setFillColor(243, 246, 253);
     doc.roundedRect(margin, y, contentW, 8, 1, 1, 'F');
     doc.setFont('helvetica', 'bold');
-    doc.setFontSize(8);
+    doc.setFontSize(11);
     doc.setTextColor(30, 58, 95);
     doc.text(title.toUpperCase(), margin + 3, y + 5.5);
     doc.setTextColor(0, 0, 0);
@@ -59,9 +59,9 @@ export const generatePDF = (agreementData) => {
   };
 
   const field = (label, value, indent = 0) => {
-    checkPageBreak(8);
+    checkPageBreak(11);
     doc.setFont('helvetica', 'bold');
-    doc.setFontSize(8);
+    doc.setFontSize(11);
     doc.setTextColor(120, 120, 140);
     doc.text(label, margin + indent, y);
     doc.setFont('helvetica', 'normal');
@@ -73,7 +73,7 @@ export const generatePDF = (agreementData) => {
 
   const bodyText = (text) => {
     doc.setFont('times', 'normal');
-    doc.setFontSize(10);
+    doc.setFontSize(12);
     doc.setTextColor(40, 40, 60);
     const lines = doc.splitTextToSize(text, contentW);
     lines.forEach((line_text) => {
@@ -86,12 +86,12 @@ export const generatePDF = (agreementData) => {
   const signatureBlock = (role, name) => {
     checkPageBreak(30);
     doc.setFont('helvetica', 'bold');
-    doc.setFontSize(9);
+    doc.setFontSize(13);
     doc.setTextColor(30, 58, 95);
     doc.text(role, margin, y);
     y += 5;
     doc.setFont('helvetica', 'normal');
-    doc.setFontSize(9);
+    doc.setFontSize(12);
     doc.setTextColor(40, 40, 60);
     doc.text(`Name: ${name}`, margin, y);
     y += 8;
@@ -115,7 +115,7 @@ export const generatePDF = (agreementData) => {
   doc.setTextColor(30, 58, 95);
   doc.text('LOAN AGREEMENT', pageW / 2, y, { align: 'center' });
   y += 7;
-  doc.setFontSize(8);
+  doc.setFontSize(11);
   doc.setFont('helvetica', 'normal');
   doc.setTextColor(120, 120, 140);
   doc.text(`Reference: ${a.agreementNumber}`, pageW / 2, y, { align: 'center' });
